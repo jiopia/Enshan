@@ -384,6 +384,13 @@ def do_sign(session: requests.Session, formhash: str) -> tuple[bool, str, dict]:
     
     # 尝试不同的签到参数
     sign_params = [
+        # 二零CMS 签到系统 - AJAX 签到
+        {
+            "url": f"{BASE_URL}/plugin.php?id=erling_qd:action&action=sign",
+            "data": {
+                "formhash": formhash,
+            }
+        },
         # 二零CMS 签到系统 - 直接提交
         {
             "url": sign_url,
